@@ -36,7 +36,6 @@ const NavBar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <img className="w-16 h-16" src={logo} alt="" />
                 <a className="btn btn-ghost normal-case text-3xl">sportsAcademy</a>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -44,10 +43,10 @@ const NavBar = () => {
                     {navItems}
                 </ul>
             </div>
-            <div>
+            <div className="navbar-end">
                 {
                     user ?
-                        <img src={user?.photoURL} alt="" />
+                        <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
                         :
                         <li><Link to='/login'>Login</Link></li>
                 }
