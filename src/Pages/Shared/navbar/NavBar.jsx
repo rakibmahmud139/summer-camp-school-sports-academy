@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from '../../../../../public/sports.png'
+import logo from '../../../../public/sports.png'
 
 const NavBar = () => {
 
@@ -9,7 +9,7 @@ const NavBar = () => {
         <li><Link to='/classes'>Classes</Link></li>
         <li><Link to='/dashboard'>Dashboard</Link></li>
         <li><Link to='/login'>Login</Link></li>
-        <li><Link to='/logOut'> LogOut</Link></li>
+        <li><Link to='/signUp'> SignUp</Link></li>
     </>
     return (
         <div className="navbar bg-accent fixed z-10 bg-opacity-50 text-white max-w-screen-xl px-6 rounded-md">

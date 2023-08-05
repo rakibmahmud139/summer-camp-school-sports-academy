@@ -1,4 +1,4 @@
-import logo from '../../../../../public/sports.png';
+import logo from '../../../../public/sports.png';
 
 
 

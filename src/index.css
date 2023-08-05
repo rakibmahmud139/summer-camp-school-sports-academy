@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+.loginBackground {
+    background-image: url('../src/assets/loginbackground.avif');
+}
