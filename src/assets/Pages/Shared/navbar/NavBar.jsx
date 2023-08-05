@@ -12,7 +12,7 @@ const NavBar = () => {
         <li><Link to='/logOut'> LogOut</Link></li>
     </>
     return (
-        <div className="navbar bg-accent fixed z-10 bg-opacity-25 text-white max-w-screen-xl px-6">
+        <div className="navbar bg-accent fixed z-10 bg-opacity-50 text-white max-w-screen-xl px-6 rounded-md">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -23,7 +23,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <img className="w-16 h-16" src={logo} alt="" />
-                <a className="btn btn-ghost normal-case text-2xl">sportsAcademies</a>
+                <a className="btn btn-ghost normal-case text-3xl">sportsAcademy</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
