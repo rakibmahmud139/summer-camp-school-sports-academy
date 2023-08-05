@@ -1,0 +1,146 @@
+[
+    {
+        "image": "https://i.ibb.co/NxxjGsY/class-1.jpg",
+        "name": "Beginner Cricket Class",
+        "instructor": "John Smith",
+        "available_seats": 20,
+        "price": 100,
+        "category": "Cricket"
+    },
+    {
+        "image": "https://i.ibb.co/d4XRLX1/class-2.jpg",
+        "name": "Intermediate Football Class",
+        "instructor": "Jane Doe",
+        "available_seats": 15,
+        "price": 120,
+        "category": "Football"
+    },
+    {
+        "image": "https://i.ibb.co/b2YQDW1/class-3.jpg",
+        "name": "Advanced Tennis Class",
+        "instructor": "Sarah Williams",
+        "available_seats": 12,
+        "price": 110,
+        "category": "Tennis"
+    },
+    {
+        "image": "https://i.ibb.co/vQrrGtN/class-4.png",
+        "name": "Popular Sports Class 1",
+        "instructor": "John Smith",
+        "available_seats": 20,
+        "price": 100,
+        "category": "Popular"
+    },
+    {
+        "image": "https://i.ibb.co/qCD956z/class-5.webp",
+        "name": "Popular Sports Class 2",
+        "instructor": "Jane Doe",
+        "available_seats": 15,
+        "price": 120,
+        "category": "Popular"
+    },
+    {
+        "image": "https://i.ibb.co/ZSHjs2n/class-6.jpg",
+        "name": "Popular Sports Class 3",
+        "instructor": "Mike Johnson",
+        "available_seats": 10,
+        "price": 150,
+        "category": "Popular"
+    },
+    {
+        "image": "https://i.ibb.co/kQvq4MR/class-7.jpg",
+        "name": "Popular Sports Class 4",
+        "instructor": "Sarah Williams",
+        "available_seats": 12,
+        "price": 110,
+        "category": "Popular"
+    },
+    {
+        "image": "https://i.ibb.co/6bcFV3Q/class-8.jpg",
+        "name": "Popular Sports Class 5",
+        "instructor": "David Lee",
+        "available_seats": 18,
+        "price": 90,
+        "category": "Popular"
+    },
+    {
+        "image": "https://i.ibb.co/S7qy2MX/class-9.jpg",
+        "name": "Popular Sports Class 6",
+        "instructor": "Emily Turner",
+        "available_seats": 25,
+        "price": 80,
+        "category": "Popular"
+    },
+    {
+        "image": "https://i.ibb.co/wJrLfHD/class-10.jpg",
+        "name": "Youth Basketball Class",
+        "instructor": "David Lee",
+        "available_seats": 18,
+        "price": 90,
+        "category": "Basketball"
+    },
+    {
+        "image": "https://i.ibb.co/8BJCCmk/class-12.jpg",
+        "name": "Beach Volleyball Class",
+        "instructor": "Robert Garcia",
+        "available_seats": 14,
+        "price": 130,
+        "category": "Volleyball"
+    },
+    {
+        "image": "https://i.ibb.co/6rSSvjv/class-13.png",
+        "name": "Track and Field Athletics Class",
+        "instructor": "Maria Martinez",
+        "available_seats": 20,
+        "price": 100,
+        "category": "Athletics"
+    },
+    {
+        "image": "https://i.ibb.co/PtSrnrB/class-14.jpg",
+        "name": "Badminton for Beginners",
+        "instructor": "Sophia Anderson",
+        "available_seats": 18,
+        "price": 100,
+        "category": "Badminton"
+    },
+    {
+        "image": "https://i.ibb.co/7yrWTZj/class-15.png",
+        "name": "Field Hockey Skills",
+        "instructor": "Kevin Thompson",
+        "available_seats": 20,
+        "price": 110,
+        "category": "Hockey"
+    },
+    {
+        "image": "https://i.ibb.co/sgzVkfR/class-16.jpg",
+        "name": "Golf Swing Techniques",
+        "instructor": "Alex Wilson",
+        "available_seats": 10,
+        "price": 140,
+        "category": "Golf"
+    },
+    {
+        "image": "https://i.ibb.co/PzNZ25m/class-17.jpg",
+        "name": "Table Tennis Tricks",
+        "instructor": "William Turner",
+        "available_seats": 14,
+        "price": 80,
+        "category": "Table Tennis"
+    },
+    {
+        "image": "https://i.ibb.co/yPqVy3F/class-18.jpg",
+        "name": "Rugby Fundamentals",
+        "instructor": "Paul Anderson",
+        "available_seats": 16,
+        "price": 120,
+        "category": "Rugby"
+    },
+    {
+        "image": "https://i.ibb.co/RQ4qD30/class-19.jpg",
+        "name": "Inline Skating Class",
+        "instructor": "Laura Martinez",
+        "available_seats": 20,
+        "price": 100,
+        "category": "Skating"
+    }
+]
