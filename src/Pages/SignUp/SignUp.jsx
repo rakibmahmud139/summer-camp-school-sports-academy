@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
@@ -38,6 +39,17 @@ const SignUp = () => {
             .then(res => {
                 const createdUser = res.user;
                 console.log(createdUser);
+                if (createUser) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Sign Up Successful',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+                form.reset('');
+                setError('');
             })
             .catch(err => {
                 console.log(err);
