@@ -1,15 +1,29 @@
 import { Link } from "react-router-dom";
 import logo from '../../../../public/sports.png'
+import useAuth from "../../../hooks/useAuth";
 
 const NavBar = () => {
+    const { user, logOut } = useAuth();
+
+    //log Out
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(() => { })
+    }
+
 
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
-        <li><Link to='/dashboard'>Dashboard</Link></li>
-        <li><Link to='/login'>Login</Link></li>
-        <li><Link to='/signUp'> SignUp</Link></li>
+        {
+            user &&
+            <>
+                <li><Link to='/dashboard'>Dashboard</Link></li>
+                <button onClick={handleLogOut}>logout</button>
+            </>
+        }
     </>
     return (
         <div className="navbar bg-accent fixed z-10 bg-opacity-50 text-white max-w-screen-xl px-6 rounded-md">
@@ -30,8 +44,13 @@ const NavBar = () => {
                     {navItems}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <li>User Profile</li>
+            <div>
+                {
+                    user ?
+                        <img src={user?.photoURL} alt="" />
+                        :
+                        <li><Link to='/login'>Login</Link></li>
+                }
             </div>
         </div>
     );
