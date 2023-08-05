@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 
 const SignUp = () => {
-    const { createUser } = useAuth();
+    const { createUser, updateUserProfile } = useAuth();
     const [error, setError] = useState();
 
 
@@ -37,17 +37,23 @@ const SignUp = () => {
 
         createUser(email, password)
             .then(res => {
-                const createdUser = res.user;
-                console.log(createdUser);
-                if (createUser) {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Sign Up Successful',
-                        showConfirmButton: false,
-                        timer: 1500
+                const createUser = res.user;
+                updateUserProfile(name, photo)
+                    .then(res => {
+                        if (createUser) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Sign Up Successful',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
                     })
-                }
+                    .catch(err => {
+                        console.log(err);
+                    })
+                console.log(createUser);
                 form.reset('');
                 setError('');
             })
@@ -60,7 +66,7 @@ const SignUp = () => {
         <div className="hero min-h-screen loginBackground">
             <form onSubmit={handleSignUp} className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-accent bg-opacity-30">
                 <p className="text-center text-red-600 mt-4">{error}</p>
-                <h3 className="text-5xl text-center uppercase pt-5">Sign Up!</h3>
+                <h3 className="text-5xl text-center uppercase pt-5 text-accent">Sign Up!</h3>
                 <div className="card-body">
                     <div className="form-control">
                         <label className="label">
