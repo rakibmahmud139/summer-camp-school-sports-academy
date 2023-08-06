@@ -1,12 +1,12 @@
 import { useLocation } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
-const AdminRoutes = () => {
+const AdminRoutes = ({ children }) => {
     const { user, loading } = useAuth();
     const location = useLocation();
     const isAdmin = true;
 
-    if (loading || isAdminLoading) {
+    if (loading) {
         return <span className="loading loading-spinner text-success"></span>
     }
 

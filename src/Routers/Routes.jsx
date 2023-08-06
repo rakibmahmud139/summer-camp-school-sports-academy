@@ -57,15 +57,15 @@ const router = createBrowserRouter([
             //Student Routes
             {
                 path: '/dashboard/studentHome',
-                element: <StudentHome />
+                element: <PrivateRoute><StudentHome /></PrivateRoute>
             },
             {
                 path: '/dashboard/myClass',
-                element: <MyClass />
+                element: <PrivateRoute><MyClass /></PrivateRoute>
             },
             {
                 path: '/dashboard/enrolledClass',
-                element: <MyEnrolledClass />
+                element: <PrivateRoute><MyEnrolledClass /></PrivateRoute>
             },
 
             //Instructor Routes
