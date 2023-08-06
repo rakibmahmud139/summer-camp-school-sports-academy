@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
 
-const PopularCard = ({ popular }) => {
-    const { image, name, instructor, available_seats, price } = popular;
+const SingleClass = ({ singleClass }) => {
+    const { image, name, instructor, available_seats, price } = singleClass;
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl">
+        <div className="card card-compact w-96 bg-base-200 shadow-2xl">
             <figure><img className="w-64 h-64 pt-5 rounded-lg" src={image} alt="" /></figure>
             <div className="card-body">
                 <h2 className="card-title">Instructor Name: {instructor}</h2>
@@ -11,13 +10,13 @@ const PopularCard = ({ popular }) => {
                 <p><span className="text-xl">Available Seats: </span> {available_seats}</p>
                 <p><span className="text-xl">Price: </span> ${price}</p>
                 <div className="card-actions justify-end">
-                    <Link to='/classes'>
-                        <button className="btn text-whit btn-outline btn-accent">See All Classes</button>
-                    </Link>
+
+                    <button className="btn text-whit btn-outline btn-accent">Add Class</button>
+
                 </div>
             </div>
         </div>
     );
 };
 
-export default PopularCard;
+export default SingleClass;

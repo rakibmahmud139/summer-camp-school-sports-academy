@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const PopularInstructorsCard = ({ instructor }) => {
     const { name, email, number_of_class_taken, img } = instructor;
@@ -11,7 +12,9 @@ const PopularInstructorsCard = ({ instructor }) => {
                 <p><span className="text-xl">Email: </span>{email}</p>
                 <p><span className="text-xl">Number of class Taken: </span>{number_of_class_taken}</p>
                 <div className="card-actions">
-                    <button className="btn btn-outline btn-accent mt-5">See All Instructors</button>
+                    <Link to='/instructors'>
+                        <button className="btn btn-outline btn-accent mt-5">See All Instructors</button>
+                    </Link>
                 </div>
             </div>
         </div>
