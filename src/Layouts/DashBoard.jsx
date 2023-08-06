@@ -21,7 +21,7 @@ const DashBoard = () => {
 
                     {isInstructor &&
                         <>
-                            <li><Link to='/dashboard/studentHome'><HiHome />Instructor Home</Link></li>
+                            <li><Link to='/dashboard/instructorHome'><HiHome />Instructor Home</Link></li>
                             <li><Link to='/dashboard/addClass'>Add A Class</Link></li>
                             <li><Link to='/dashboard/instructorClass'>My Class</Link></li>
                         </>

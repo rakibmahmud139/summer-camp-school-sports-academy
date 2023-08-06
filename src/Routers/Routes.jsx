@@ -11,6 +11,8 @@ import StudentHome from "../Pages/Dashboard/StudentDashBoard/studentHome/Student
 import MyClass from "../Pages/Dashboard/StudentDashBoard/myClass/Myclass";
 import MyEnrolledClass from "../Pages/Dashboard/StudentDashBoard/myEnrolledClass/MyEnrolledClass";
 import PrivateRoute from "./PrivateRoute";
+import AddAClass from "../Pages/Dashboard/instructorDashBoard/AddAClass";
+import InstructorsClass from "../Pages/Dashboard/instructorDashBoard/InstructorsClass";
 
 
 
@@ -60,6 +62,16 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/enrolledClass',
                 element: <MyEnrolledClass />
+            },
+
+            //Instructor Routes
+            {
+                path: '/dashboard/addClass',
+                element: <AddAClass />
+            },
+            {
+                path: '/dashboard/instructorClass',
+                element: <InstructorsClass />
             }
         ]
     }
