@@ -2,7 +2,9 @@ import { Link, Outlet } from "react-router-dom";
 import { HiHome } from "react-icons/hi";
 
 const DashBoard = () => {
-    const isInstructor = true;
+    const isInstructor = false;
+    const isAdmin = true;
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -24,6 +26,14 @@ const DashBoard = () => {
                             <li><Link to='/dashboard/instructorHome'><HiHome />Instructor Home</Link></li>
                             <li><Link to='/dashboard/addClass'>Add A Class</Link></li>
                             <li><Link to='/dashboard/instructorClass'>My Class</Link></li>
+                        </>
+                    }
+
+                    {isAdmin &&
+                        <>
+                            <li><Link to='/dashboard/adminHome'><HiHome />Admin Home</Link></li>
+                            <li><Link to='/dashboard/mangeClass'>Manage Classes</Link></li>
+                            <li><Link to='/dashboard/manageUser'>Mange User</Link></li>
                         </>
                     }
 
