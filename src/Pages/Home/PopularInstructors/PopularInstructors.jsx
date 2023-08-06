@@ -17,7 +17,7 @@ const PopularInstructors = () => {
         <div>
             <div className=" mb-12 mt-20 text-center">
                 <h3 className="text-accent text-3xl uppercase">Popular Instructors</h3>
-                <p>Here The Our Best Instructors</p>
+                <p className="text-pink-600">***Here The Our Best Instructors***</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
