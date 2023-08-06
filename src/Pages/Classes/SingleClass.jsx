@@ -26,13 +26,13 @@ const SingleClass = ({ singleClass }) => {
                     if (data.insertedId) {
                         Swal.fire(
                             'Added!',
-                            'food has been added on the cart.',
+                            'Your class has been added.',
                             'success',
                         )
                     }
                     else {
                         Swal.fire({
-                            title: 'Please login to order the food',
+                            title: 'Please login to add class',
                             icon: 'warning',
                             showCancelButton: true,
                             confirmButtonColor: '#3085d6',

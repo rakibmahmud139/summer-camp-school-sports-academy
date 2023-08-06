@@ -10,6 +10,7 @@ import DashBoard from "../Layouts/DashBoard";
 import StudentHome from "../Pages/Dashboard/StudentDashBoard/studentHome/StudentHome";
 import MyClass from "../Pages/Dashboard/StudentDashBoard/myClass/Myclass";
 import MyEnrolledClass from "../Pages/Dashboard/StudentDashBoard/myEnrolledClass/MyEnrolledClass";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashBoard />,
+        element: <PrivateRoute><DashBoard /></PrivateRoute>,
         children: [
 
             //Student Routes

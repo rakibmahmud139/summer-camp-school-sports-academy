@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const MyClass = () => {
     const [myClasses, setMyClasses] = useState([]);
+    const [myClass, setMyClass] = useState(myClasses);
 
     useEffect(() => {
         fetch('http://localhost:5000/carts')
@@ -11,8 +13,48 @@ const MyClass = () => {
     }, [])
 
 
+    //deleteClass
+    const handleDelete = myClasses => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/carts/${myClasses._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            const remaining = myClass.filter(item => item._id !== myClasses._id);
+                            setMyClass(remaining);
+                        }
+                    })
+            }
+        })
+
+    }
+
+    const total = myClasses.reduce((sum, item) => sum + item.price, 0)
+
+
     return (
-        <div>
+        <div className="w-full">
+            <div className="uppercase flex justify-center items-center rounded-lg text-gray-900 bg-pink-100 py-5 mb-5">
+                <h3 className="text-3xl">My Class : {myClasses.length}</h3>
+                <p className="mx-48">total: ${total}</p>
+                <button className="btn btn-accent btn-sm">PAY</button>
+            </div>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -46,7 +88,7 @@ const MyClass = () => {
                                     </td>
                                     <td className="text-end">${myClass.price}</td>
                                     <td>
-                                        <button className="btn btn-outline btn-xs btn-accent text-xl"><FaTrashAlt /></button>
+                                        <button onClick={() => handleDelete(myClass)} className="btn btn-outline btn-xs btn-accent text-xl"><FaTrashAlt /></button>
                                     </td>
                                 </tr>
                             )

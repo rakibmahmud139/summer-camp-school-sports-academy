@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -8,6 +8,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 const SignUp = () => {
     const { createUser, updateUserProfile } = useAuth();
     const [error, setError] = useState();
+    const navigate = useNavigate();
 
 
     const handleSignUp = event => {
@@ -57,6 +58,7 @@ const SignUp = () => {
                 console.log(createUser);
                 form.reset('');
                 setError('');
+                navigate('/')
             })
             .catch(err => {
                 console.log(err);

@@ -1,11 +1,16 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
     const { login } = useAuth();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
 
     //Login User
@@ -23,6 +28,7 @@ const Login = () => {
                         timer: 1500
                     })
                     reset();
+                    navigate(from, { replace: true })
                 }
             })
             .catch(err => {
