@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
@@ -64,44 +65,47 @@ const SignUp = () => {
 
     return (
         <div className="hero min-h-screen loginBackground">
-            <form onSubmit={handleSignUp} className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-accent bg-opacity-30">
-                <p className="text-center text-red-600 mt-4">{error}</p>
-                <h3 className="text-5xl text-center uppercase pt-5 text-accent">Sign Up!</h3>
-                <div className="card-body">
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Name</span>
-                        </label>
-                        <input type="text" name="name" placeholder="name" className="input input-bordered" required />
+            <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-accent bg-opacity-30">
+                <form onSubmit={handleSignUp} >
+                    <p className="text-center text-red-600 mt-4">{error}</p>
+                    <h3 className="text-5xl text-center uppercase pt-5 text-accent">Sign Up!</h3>
+                    <div className="card-body">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input type="text" name="name" placeholder="name" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                            </label>
+                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Password</span>
+                            </label>
+                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Confirm Password</span>
+                            </label>
+                            <input type="password" name="confirmPassword" placeholder="confirm password" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Photo URL</span>
+                            </label>
+                            <input type="text" name="photo" placeholder="photo" className="input input-bordered" required />
+                        </div>
+                        <input className="btn btn-outline btn-accent mt-6" type="submit" value="Sign Up" />
                     </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input type="email" name="email" placeholder="email" className="input input-bordered" required />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Password</span>
-                        </label>
-                        <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Confirm Password</span>
-                        </label>
-                        <input type="password" name="confirmPassword" placeholder="confirm password" className="input input-bordered" required />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Photo URL</span>
-                        </label>
-                        <input type="text" name="photo" placeholder="photo" className="input input-bordered" required />
-                    </div>
-                    <input className="btn btn-outline btn-accent mt-6" type="submit" value="Sign Up" />
-                </div>
-                <p className="text-center pb-4">Have an account? <Link to='/login' className="text-accent">Login</Link></p>
-            </form>
+                    <p className="text-center pb-4">Have an account? <Link to='/login' className="text-accent">Login</Link></p>
+                </form>
+                <SocialLogin />
+            </div>
         </div>
     );
 };
