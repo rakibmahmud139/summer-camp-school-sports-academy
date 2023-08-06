@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { FaGoogle } from "react-icons/fa";
 
 const SocialLogin = () => {
     const { googleLogin } = useAuth();
@@ -20,7 +21,7 @@ const SocialLogin = () => {
         <div className="mb-4">
             <div className="divider">OR</div>
             <div className="text-center">
-                <button onClick={handleGoogleLogin} className="btn btn-accent">Sign with Google</button>
+                <button onClick={handleGoogleLogin} className="btn btn-accent"><FaGoogle className="text-2xl text-red-400" />Sign with Google</button>
             </div>
         </div>
     );
