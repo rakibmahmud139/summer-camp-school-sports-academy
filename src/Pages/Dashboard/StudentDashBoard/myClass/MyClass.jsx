@@ -5,11 +5,11 @@ import Swal from "sweetalert2";
 
 const MyClass = () => {
     const myClasses = useLoaderData();
-    const [myClass, setMyClass] = useState(myClasses);
+    const [myRemainingClass, setMyRemainingClass] = useState(myClasses);
 
 
     //deleteClass
-    const handleDelete = id => {
+    const handleDelete = myClass => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -20,7 +20,7 @@ const MyClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://sports-academy-server-three.vercel.app/carts/${id}`, {
+                fetch(`https://sports-academy-server-three.vercel.app/carts/${myClass._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -31,8 +31,8 @@ const MyClass = () => {
                                 'Your file has been deleted.',
                                 'success'
                             )
-                            const remaining = myClass.filter(item => item._id !== id);
-                            setMyClass(remaining);
+                            const remaining = myRemainingClass.filter(item => item._id !== myClass._id);
+                            setMyRemainingClass(remaining);
                         }
                     })
             }
@@ -83,7 +83,7 @@ const MyClass = () => {
                                     </td>
                                     <td className="text-end">${myClass.price}</td>
                                     <td>
-                                        <button onClick={() => handleDelete(myClass._id)} className="btn btn-outline btn-xs btn-accent text-xl"><FaTrashAlt /></button>
+                                        <button onClick={() => handleDelete(myClass)} className="btn btn-outline btn-xs btn-accent text-xl"><FaTrashAlt /></button>
                                     </td>
                                 </tr>
                             )
