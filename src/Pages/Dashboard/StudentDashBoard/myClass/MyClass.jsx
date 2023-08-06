@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyClass = () => {
-    const [myClasses, setMyClasses] = useState([]);
+    const myClasses = useLoaderData();
     const [myClass, setMyClass] = useState(myClasses);
-
-    useEffect(() => {
-        fetch('http://localhost:5000/carts')
-            .then(res => res.json())
-            .then(data => setMyClasses(data))
-    }, [])
 
 
     //deleteClass
@@ -25,7 +20,7 @@ const MyClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/carts/${myClasses._id}`, {
+                fetch(`https://sports-academy-server-three.vercel.app/carts/${myClasses._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -88,7 +83,7 @@ const MyClass = () => {
                                     </td>
                                     <td className="text-end">${myClass.price}</td>
                                     <td>
-                                        <button onClick={() => handleDelete(myClass)} className="btn btn-outline btn-xs btn-accent text-xl"><FaTrashAlt /></button>
+                                        <button onClick={() => handleDelete(myClasses)} className="btn btn-outline btn-xs btn-accent text-xl"><FaTrashAlt /></button>
                                     </td>
                                 </tr>
                             )

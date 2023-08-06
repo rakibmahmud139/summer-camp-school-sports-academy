@@ -3,7 +3,7 @@ import { HiHome } from "react-icons/hi";
 
 const DashBoard = () => {
     const isInstructor = false;
-    const isAdmin = true;
+    const isAdmin = false;
 
     return (
         <div className="drawer lg:drawer-open">
@@ -16,10 +16,21 @@ const DashBoard = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-accent text-white">
-                    {/* Sidebar content here */}
-                    <li><Link to='/dashboard/studentHome'><HiHome />Student Home</Link></li>
-                    <li><Link to='/dashboard/myClass'>My Selected Class</Link></li>
-                    <li><Link to='/dashboard/enrolledClass'>My Enrolled Class</Link></li>
+
+                    {
+                        isAdmin ?
+                            <>
+                                <li><Link to='/dashboard/adminHome'><HiHome />Admin Home</Link></li>
+                                <li><Link to='/dashboard/mangeClass'>Manage Classes</Link></li>
+                                <li><Link to='/dashboard/manageUser'>Mange User</Link></li>
+                            </>
+                            :
+                            <>
+                                <li><Link to='/dashboard/studentHome'><HiHome />Student Home</Link></li>
+                                <li><Link to='/dashboard/myClass'>My Selected Class</Link></li>
+                                <li><Link to='/dashboard/enrolledClass'>My Enrolled Class</Link></li>
+                            </>
+                    }
 
                     {isInstructor &&
                         <>
@@ -29,13 +40,7 @@ const DashBoard = () => {
                         </>
                     }
 
-                    {isAdmin &&
-                        <>
-                            <li><Link to='/dashboard/adminHome'><HiHome />Admin Home</Link></li>
-                            <li><Link to='/dashboard/mangeClass'>Manage Classes</Link></li>
-                            <li><Link to='/dashboard/manageUser'>Mange User</Link></li>
-                        </>
-                    }
+
 
                     <div className="divider">OR</div>
 
