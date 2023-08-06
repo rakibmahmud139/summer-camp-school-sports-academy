@@ -13,6 +13,9 @@ import MyEnrolledClass from "../Pages/Dashboard/StudentDashBoard/myEnrolledClass
 import PrivateRoute from "./PrivateRoute";
 import AddAClass from "../Pages/Dashboard/instructorDashBoard/AddAClass";
 import InstructorsClass from "../Pages/Dashboard/instructorDashBoard/InstructorsClass";
+import AdminHome from "../Pages/Dashboard/AdminDashBoard/AdminHome";
+import ManageClasses from "../Pages/Dashboard/AdminDashBoard/ManageClasses";
+import MangeUser from "../Pages/Dashboard/AdminDashBoard/MangeUser";
 
 
 
@@ -72,6 +75,20 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/instructorClass',
                 element: <PrivateRoute> <InstructorsClass /></PrivateRoute>
+            },
+
+            //Admin Routers
+            {
+                path: '/dashboard/adminHome',
+                element: <AdminHome />
+            },
+            {
+                path: '/dashboard/mangeClass',
+                element: <ManageClasses />
+            },
+            {
+                path: '/dashboard/manageUser',
+                element: <MangeUser />
             }
         ]
     }
