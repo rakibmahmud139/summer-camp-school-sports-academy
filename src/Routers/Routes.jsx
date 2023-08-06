@@ -62,7 +62,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/myClass',
                 element: <PrivateRoute><MyClass /></PrivateRoute>,
-                loader: () => fetch('https://sports-academy-server-three.vercel.app/carts')
+                loader: () => fetch('https://sports-academy-server-rakibmahmud139.vercel.app/carts')
             },
             {
                 path: '/dashboard/enrolledClass',
