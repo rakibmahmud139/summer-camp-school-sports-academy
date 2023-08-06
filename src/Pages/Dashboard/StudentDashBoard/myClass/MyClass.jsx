@@ -9,7 +9,7 @@ const MyClass = () => {
 
 
     //deleteClass
-    const handleDelete = myClasses => {
+    const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -20,7 +20,7 @@ const MyClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://sports-academy-server-three.vercel.app/carts/${myClasses._id}`, {
+                fetch(`https://sports-academy-server-three.vercel.app/carts/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -31,7 +31,7 @@ const MyClass = () => {
                                 'Your file has been deleted.',
                                 'success'
                             )
-                            const remaining = myClass.filter(item => item._id !== myClasses._id);
+                            const remaining = myClass.filter(item => item._id !== id);
                             setMyClass(remaining);
                         }
                     })
@@ -83,7 +83,7 @@ const MyClass = () => {
                                     </td>
                                     <td className="text-end">${myClass.price}</td>
                                     <td>
-                                        <button onClick={() => handleDelete(myClasses)} className="btn btn-outline btn-xs btn-accent text-xl"><FaTrashAlt /></button>
+                                        <button onClick={() => handleDelete(myClass._id)} className="btn btn-outline btn-xs btn-accent text-xl"><FaTrashAlt /></button>
                                     </td>
                                 </tr>
                             )
