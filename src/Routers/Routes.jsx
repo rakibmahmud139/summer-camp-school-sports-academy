@@ -67,11 +67,11 @@ const router = createBrowserRouter([
             //Instructor Routes
             {
                 path: '/dashboard/addClass',
-                element: <AddAClass />
+                element: <PrivateRoute><AddAClass /></PrivateRoute>
             },
             {
                 path: '/dashboard/instructorClass',
-                element: <InstructorsClass />
+                element: <PrivateRoute> <InstructorsClass /></PrivateRoute>
             }
         ]
     }
