@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
+import { toast } from "react-hot-toast";
 
 const MangeUser = () => {
     const { user } = useAuth();
@@ -21,12 +22,30 @@ const MangeUser = () => {
             .then(res => res.json())
             .then(data => {
                 refetch()
-                console.log(data);
+                if (data.modifiedCount > 0) {
+                    toast.success(`${user.displayName} admin now`)
+                }
             })
 
     }
+
+
+    //delete student
+    const handleDelete = id => {
+        fetch(`http://localhost:5000/students/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch()
+                if (data.deletedCount > 0) {
+                    toast.success('deleted successful')
+                }
+            })
+    }
+
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto w-full">
             <table className="table">
                 {/* head */}
                 <thead>
@@ -60,7 +79,7 @@ const MangeUser = () => {
                                     }
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(student)} className="btn btn-outline btn-xs btn-accent text-xl"><FaTrashAlt /></button>
+                                    <button onClick={() => handleDelete(student._id)} className="btn btn-outline btn-xs btn-accent text-xl"><FaTrashAlt /></button>
                                 </td>
                             </tr>
                         )

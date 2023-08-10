@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useCart from "../../hooks/useCart";
+import { toast } from "react-hot-toast";
 
 const SingleClass = ({ singleClass }) => {
     const { image, name, instructor, available_seats, price } = singleClass;
@@ -26,25 +27,9 @@ const SingleClass = ({ singleClass }) => {
                     console.log(data);
                     if (data.insertedId) {
                         refetch();
-                        Swal.fire(
-                            'Added!',
-                            'Your class has been added.',
-                            'success',
-                        )
-                    }
-                    else {
-                        Swal.fire({
-                            title: 'Please login to add class',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Login Now'
-                        })
-                        navigate('/login')
+                        toast.success('Class added successful!!')
                     }
                 })
-
         }
     }
     return (
