@@ -10,7 +10,31 @@ const SocialLogin = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(res => {
-                console.log(res.user);
+                const createUser = res.user;
+                const student = { name: createUser.displayName, email: createUser.email }
+
+                fetch('http://localhost:5000/students', {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(student)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Sign Up Successful',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            form.reset('');
+                            setError('');
+                            navigate('/')
+                        }
+                    })
                 navigate('/')
             })
             .catch(err => {

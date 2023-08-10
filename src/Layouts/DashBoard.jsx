@@ -3,7 +3,7 @@ import { HiHome } from "react-icons/hi";
 
 const DashBoard = () => {
     const isInstructor = false;
-    const isAdmin = false;
+    const isAdmin = true;
 
     return (
         <div className="drawer lg:drawer-open">
@@ -22,7 +22,7 @@ const DashBoard = () => {
                             <>
                                 <li><Link to='/dashboard/adminHome'><HiHome />Admin Home</Link></li>
                                 <li><Link to='/dashboard/mangeClass'>Manage Classes</Link></li>
-                                <li><Link to='/dashboard/manageUser'>Mange User</Link></li>
+                                <li><Link to='/dashboard/allStudent'>All Student</Link></li>
                             </>
                             :
                             <>

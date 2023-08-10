@@ -8,7 +8,6 @@ import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import DashBoard from "../Layouts/DashBoard";
 import StudentHome from "../Pages/Dashboard/StudentDashBoard/studentHome/StudentHome";
-import MyClass from "../Pages/Dashboard/StudentDashBoard/myClass/Myclass";
 import MyEnrolledClass from "../Pages/Dashboard/StudentDashBoard/myEnrolledClass/MyEnrolledClass";
 import PrivateRoute from "./PrivateRoute";
 import AddAClass from "../Pages/Dashboard/instructorDashBoard/AddAClass";
@@ -17,6 +16,7 @@ import AdminHome from "../Pages/Dashboard/AdminDashBoard/AdminHome";
 import ManageClasses from "../Pages/Dashboard/AdminDashBoard/ManageClasses";
 import MangeUser from "../Pages/Dashboard/AdminDashBoard/MangeUser";
 import AdminRoutes from "./AdminRoutes";
+import MyClass from "../Pages/Dashboard/StudentDashBoard/myClass/MyClass";
 
 
 
@@ -62,7 +62,6 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/myClass',
                 element: <PrivateRoute><MyClass /></PrivateRoute>,
-                loader: () => fetch('https://sports-academy-server-rakibmahmud139.vercel.app/carts')
             },
             {
                 path: '/dashboard/enrolledClass',
@@ -89,7 +88,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><AdminRoutes><ManageClasses /></AdminRoutes></PrivateRoute>
             },
             {
-                path: '/dashboard/manageUser',
+                path: '/dashboard/allStudent',
                 element: <PrivateRoute><AdminRoutes><MangeUser /></AdminRoutes></PrivateRoute>
             }
         ]

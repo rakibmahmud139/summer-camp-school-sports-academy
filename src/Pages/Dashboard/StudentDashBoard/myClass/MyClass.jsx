@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import useCart from "../../../../hooks/useCart";
 
 const MyClass = () => {
-    const myClasses = useLoaderData();
-    const [myRemainingClass, setMyRemainingClass] = useState(myClasses);
+
+    const [cart, refetch] = useCart();
 
 
     //deleteClass
@@ -20,19 +21,18 @@ const MyClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://sports-academy-server-rakibmahmud139.vercel.app/carts/${myClass._id}`, {
+                fetch(`http://localhost:5000/carts/${myClass._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
                     .then(data => {
                         if (data.deletedCount > 0) {
+                            refetch();
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',
                                 'success'
                             )
-                            const remaining = myRemainingClass.filter(item => item._id !== myClass._id);
-                            setMyRemainingClass(remaining);
                         }
                     })
             }
@@ -40,13 +40,13 @@ const MyClass = () => {
 
     }
 
-    const total = myClasses.reduce((sum, item) => sum + item.price, 0)
+    const total = cart.reduce((sum, item) => sum + item.price, 0)
 
 
     return (
         <div className="w-full">
             <div className="uppercase flex justify-center items-center rounded-lg text-gray-900 bg-pink-100 py-5 mb-5">
-                <h3 className="text-3xl">My Class : {myClasses.length}</h3>
+                <h3 className="text-3xl">My Class : {cart.length}</h3>
                 <p className="mx-48">total: ${total}</p>
                 <button className="btn btn-accent btn-sm">PAY</button>
             </div>
@@ -64,7 +64,7 @@ const MyClass = () => {
                     </thead>
                     <tbody>
                         {
-                            myClasses.map((myClass, index) =>
+                            cart.map((myClass, index) =>
                                 <tr key={myClass._id}>
                                     <td>
                                         {index + 1}

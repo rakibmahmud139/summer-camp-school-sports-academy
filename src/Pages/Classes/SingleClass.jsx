@@ -1,19 +1,20 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useCart from "../../hooks/useCart";
 
 const SingleClass = ({ singleClass }) => {
     const { image, name, instructor, available_seats, price } = singleClass;
+    const [, refetch] = useCart();
     const { user } = useAuth();
     const navigate = useNavigate();
-    const location = useLocation();
 
 
-    const handleAddToCart = (singleClass) => {
-        if (user && user.email) {
-            const cartItem = { name, image, price, email: user.email }
+    const handleAddToCart = () => {
+        if (user && user?.email) {
+            const cartItem = { name, image, price, email: user?.email }
 
-            fetch('https://sports-academy-server-rakibmahmud139.vercel.app/carts', {
+            fetch('http://localhost:5000/carts', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
@@ -24,6 +25,7 @@ const SingleClass = ({ singleClass }) => {
                 .then(data => {
                     console.log(data);
                     if (data.insertedId) {
+                        refetch();
                         Swal.fire(
                             'Added!',
                             'Your class has been added.',
