@@ -1,11 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
 import { HiHome, HiStatusOnline, HiBookmark } from "react-icons/hi";
+import { FaBook } from "react-icons/fa";
+import { MdClass, MdOutlineLibraryAddCheck } from "react-icons/md";
+import { BsFillBookmarksFill } from 'react-icons/bs'
 import useAdmin from "../hooks/useAdmin";
 
 const DashBoard = () => {
-    const isInstructor = false;
-    // const isAdmin = true;
-
+    const isInstructor = true;
     const [isAdmin] = useAdmin()
 
     return (
@@ -23,31 +24,31 @@ const DashBoard = () => {
                     {
                         isAdmin ?
                             <>
-                                <li><Link to='/dashboard/adminHome'><HiHome />Admin Home</Link></li>
-                                <li><Link to='/dashboard/mangeClass'><HiBookmark /> Manage Classes</Link></li>
-                                <li><Link to='/dashboard/allStudent'><HiStatusOnline /> All Student</Link></li>
+                                <li><Link to='/dashboard/adminHome'><HiHome size={20} />Admin Home</Link></li>
+                                <li><Link to='/dashboard/mangeClass'><HiBookmark size={20} /> Manage Classes</Link></li>
+                                <li><Link to='/dashboard/allStudent'><HiStatusOnline size={20} /> All Student</Link></li>
                             </>
                             :
                             <>
-                                <li><Link to='/dashboard/studentHome'><HiHome />Student Home</Link></li>
-                                <li><Link to='/dashboard/myClass'>My Selected Class</Link></li>
-                                <li><Link to='/dashboard/enrolledClass'>My Enrolled Class</Link></li>
+                                <li><Link to='/dashboard/studentHome'><HiHome size={20} />Student Home</Link></li>
+                                <li><Link to='/dashboard/myClass'><MdClass size={20} /> My Selected Class</Link></li>
+                                <li><Link to='/dashboard/enrolledClass'><FaBook size={20} /> My Enrolled Class</Link></li>
                             </>
                     }
 
                     {isInstructor &&
                         <>
-                            <li><Link to='/dashboard/instructorHome'><HiHome />Instructor Home</Link></li>
-                            <li><Link to='/dashboard/addClass'>Add A Class</Link></li>
-                            <li><Link to='/dashboard/instructorClass'>My Class</Link></li>
+                            <li><Link to='/dashboard/instructorHome'><HiHome size={20} />Instructor Home</Link></li>
+                            <li><Link to='/dashboard/addClass'><MdOutlineLibraryAddCheck size={20} /> Add A Class</Link></li>
+                            <li><Link to='/dashboard/instructorClass'><BsFillBookmarksFill /> My Class</Link></li>
                         </>
                     }
 
 
 
-                    <div className="divider">OR</div>
+                    <div className="divider"></div>
 
-                    <li><Link to='/'><HiHome />Home</Link></li>
+                    <li><Link to='/'><HiHome size={20} />Home</Link></li>
                 </ul>
 
             </div>
