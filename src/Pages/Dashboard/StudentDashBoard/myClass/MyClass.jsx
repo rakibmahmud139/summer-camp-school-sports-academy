@@ -3,6 +3,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import useCart from "../../../../hooks/useCart";
+import { toast } from "react-hot-toast";
 
 const MyClass = () => {
 
@@ -28,11 +29,7 @@ const MyClass = () => {
                     .then(data => {
                         if (data.deletedCount > 0) {
                             refetch();
-                            Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                            )
+                            toast.success('Deleted Successful!!')
                         }
                     })
             }
@@ -45,13 +42,13 @@ const MyClass = () => {
 
     return (
         <div className="w-full">
-            <div className="uppercase flex justify-center items-center rounded-lg text-gray-900 bg-pink-100 py-5 mb-5">
-                <h3 className="text-3xl">My Class : {cart.length}</h3>
-                <p className="mx-48">total: ${total}</p>
+            <div className="uppercase flex justify-evenly md:justify-center  items-center rounded-lg text-gray-900 bg-pink-100 py-5 mb-5">
+                <h3 className="md:text-3xl font-bold">My <span className="text-pink-600">Class</span> : {cart.length}</h3>
+                <p className="md:mx-48 font-bold">total:  <span className="text-pink-600"> $</span>{total}</p>
                 <button className="btn btn-accent btn-sm">PAY</button>
             </div>
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table w-96 md:w-full">
                     {/* head */}
                     <thead>
                         <tr>

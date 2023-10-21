@@ -3,11 +3,12 @@ import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useAuth();
-    const [error, setError] = useState();
     const navigate = useNavigate();
 
 
@@ -22,19 +23,19 @@ const SignUp = () => {
         const photo = form.photo.value;
 
         if (password !== confirmPassword) {
-            return setError('your password and confirm password not match')
+            return toast.error('your password and confirm password not match')
         }
 
         if (password.length === 6) {
-            return setError("is less than 6 characters")
+            return toast.error("is less than 6 characters")
         }
 
         if (!/(?=.*[!@#$%^&*])/.test(password)) {
-            return setError("don't have a special character")
+            return toast.error("don't have a special character")
         }
 
         if (!/(?=.*[A-Z])/.test(password)) {
-            return setError("don't have a capital letter")
+            return toast.error("don't have a capital letter")
         }
 
         createUser(email, password)
@@ -55,15 +56,8 @@ const SignUp = () => {
                                 .then(res => res.json())
                                 .then(data => {
                                     if (data.insertedId) {
-                                        Swal.fire({
-                                            position: 'top-end',
-                                            icon: 'success',
-                                            title: 'Sign Up Successful',
-                                            showConfirmButton: false,
-                                            timer: 1500
-                                        })
+                                        toast.success('Register Successful!!')
                                         form.reset('');
-                                        setError('');
                                         navigate('/')
                                     }
                                 })
@@ -80,9 +74,12 @@ const SignUp = () => {
 
     return (
         <div className="hero min-h-screen loginBackground">
+            <Helmet
+            >
+                <title>sportsAcademy | SignUp</title>
+            </Helmet>
             <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-accent bg-opacity-30">
                 <form onSubmit={handleSignUp} >
-                    <p className="text-center text-red-600 mt-4">{error}</p>
                     <h3 className="text-5xl text-center uppercase pt-5 text-accent">Sign Up!</h3>
                     <div className="card-body">
                         <div className="form-control">

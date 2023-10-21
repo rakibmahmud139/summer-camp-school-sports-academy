@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SingleClass from './SingleClass';
+// import PaginationComponent from '../../Components/PaginationComponent';
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
@@ -12,7 +13,7 @@ const Classes = () => {
 
     return (
         <div>
-            <h3 className="text-accent text-center text-3xl uppercase mt-20 mb-12">Here the all our classes</h3>
+            <h3 className="text-accent text-center text-xl md:text-3xl uppercase mt-20 mb-12">Here the all our classes</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
                     classes.map(singleClass => <SingleClass
@@ -20,6 +21,9 @@ const Classes = () => {
                         singleClass={singleClass}
                     />)
                 }
+
+
+                {/* <PaginationComponent data={classes} itemsPerPage={6} /> */}
             </div>
         </div>
     );

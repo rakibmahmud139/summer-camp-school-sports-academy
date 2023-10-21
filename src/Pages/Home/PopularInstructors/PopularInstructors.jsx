@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PopularInstructorsCard from "./PopularInstructorsCard";
+import Title from "../../../Components/Title";
 
 const PopularInstructors = () => {
     const [instructors, setInstructors] = useState([]);
@@ -15,11 +16,7 @@ const PopularInstructors = () => {
 
     return (
         <div>
-            <div className=" mb-12 mt-20 text-center">
-                <h3 className="text-accent text-3xl uppercase">Popular Instructors</h3>
-                <p className="text-pink-600">***Here The Our Best Instructors***</p>
-            </div>
-
+            <Title heading='Popular Instructors' subHeading='Here The Our Best Instructors' />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
                     popularInstructors.map(instructor => <PopularInstructorsCard

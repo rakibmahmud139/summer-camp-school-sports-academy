@@ -14,20 +14,20 @@ const Banner = () => {
     return (
         <div ref={sliderRef} className="keen-slider">
             <div className="keen-slider__slide number-slide1 ">
-                <img className="w-full h-[760px] rounded" src={img1} alt="" />
+                <img className="w-full h-96 md:h-[760px] rounded" src={img1} alt="" />
 
             </div>
             <div className="keen-slider__slide number-slide2">
-                <img className="w-full h-[760px] rounded" src={img2} alt="" />
+                <img className="w-full  h-96 md:h-[760px] rounded" src={img2} alt="" />
             </div>
             <div className="keen-slider__slide number-slide3">
-                <img className="w-full h-[760px] rounded" src={img3} alt="" />
+                <img className="w-full  h-96 md:h-[760px] rounded" src={img3} alt="" />
             </div>
             <div className="keen-slider__slide number-slide4">
-                <img className="w-full h-[760px] rounded" src={img4} alt="" />
+                <img className="w-full  h-96 md:h-[760px] rounded" src={img4} alt="" />
             </div>
             <div className="keen-slider__slide number-slide5">
-                <img className="w-full h-[760px] rounded" src={img5} alt="" />
+                <img className="w-full  h-96 md:h-[760px] rounded" src={img5} alt="" />
             </div>
         </div>
     );

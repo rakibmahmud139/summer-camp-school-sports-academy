@@ -1,9 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
-import { HiHome } from "react-icons/hi";
+import { HiHome, HiStatusOnline, HiBookmark } from "react-icons/hi";
+import useAdmin from "../hooks/useAdmin";
 
 const DashBoard = () => {
     const isInstructor = false;
-    const isAdmin = true;
+    // const isAdmin = true;
+
+    const [isAdmin] = useAdmin()
 
     return (
         <div className="drawer lg:drawer-open">
@@ -21,8 +24,8 @@ const DashBoard = () => {
                         isAdmin ?
                             <>
                                 <li><Link to='/dashboard/adminHome'><HiHome />Admin Home</Link></li>
-                                <li><Link to='/dashboard/mangeClass'>Manage Classes</Link></li>
-                                <li><Link to='/dashboard/allStudent'>All Student</Link></li>
+                                <li><Link to='/dashboard/mangeClass'><HiBookmark /> Manage Classes</Link></li>
+                                <li><Link to='/dashboard/allStudent'><HiStatusOnline /> All Student</Link></li>
                             </>
                             :
                             <>

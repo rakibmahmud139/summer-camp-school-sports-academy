@@ -7,7 +7,7 @@ const GallerySection = () => {
 
     return (
         <div>
-            <div className="uppercase text-center  mb-12 mt-20">
+            <div className="text-center  mb-12 mt-20">
                 <h3 className="text-accent uppercase">
                     <TypeAnimation
                         preRenderFirstString={true}
@@ -34,16 +34,16 @@ const GallerySection = () => {
             </div>
             <div ref={sliderRef} className="keen-slider">
                 <div className="keen-slider__slide number-slide1 lg:flex justify-center items-center gap-24">
-                    <img className="w-1/2 h-[360px] rounded-xl ml-12" src="https://i.ibb.co/Zx7vF3j/download-6.jpg" alt="" />
-                    <p className="mr-12">Congratulations on your student joining a professional basketball team from our academy! <br /> Here the some facilities of our academy. <br />Training Fields/Courts: State-of-the-art fields or courts equipped for specific sports, like soccer, basketball, tennis, etc., with proper markings and high-quality surfaces. <br />
+                    <img className="w-1/2 h-64 md:h-[360px] rounded-xl ml-12" src="https://i.ibb.co/Zx7vF3j/download-6.jpg" alt="" />
+                    <p className="mr-12 mt-4 md:mt-0 pl-4 md:pl-0">Congratulations on your student joining a professional basketball team from our academy! Here the some facilities of our academy. <br />Training Fields/Courts: State-of-the-art fields or courts equipped for specific sports, like soccer, basketball, tennis, etc., with proper markings and high-quality surfaces. <br />
                         Fitness Center: A well-equipped fitness center with modern exercise machines, weights, and cardio equipment to support athletes' strength and conditioning training.
                         <p>His Name: Anderson.....</p>
                     </p>
 
                 </div>
                 <div className="keen-slider__slide number-slide2 lg:flex justify-center items-center gap-24">
-                    <img className="w-1/2 h-[360px] rounded-xl ml-12" src="https://i.ibb.co/VHNtNHn/images-16.jpg" alt="" />
-                    <p className="mr-12">Congratulations on your student joining a professional basketball team from our academy! <br /> Here the some facilities of our academy. <br />Training Fields/Courts: State-of-the-art fields or courts equipped for specific sports, like soccer, basketball, tennis, etc., with proper markings and high-quality surfaces. <br />
+                    <img className="w-1/2 h-64 md:h-[360px] rounded-xl ml-12" src="https://i.ibb.co/VHNtNHn/images-16.jpg" alt="" />
+                    <p className="mr-12 mt-4 md:mt-0 pl-4 md:pl-0">Congratulations on your student joining a professional basketball team from our academy! <br /> Here the some facilities of our academy. <br />Training Fields/Courts: State-of-the-art fields or courts equipped for specific sports, like soccer, basketball, tennis, etc., with proper markings and high-quality surfaces. <br />
                         Fitness Center: A well-equipped fitness center with modern exercise machines, weights, and cardio equipment to support athletes' strength and conditioning training.
                         <p>His Name: Paul Anderson.....</p>
                     </p>

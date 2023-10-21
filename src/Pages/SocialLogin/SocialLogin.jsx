@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { FaGoogle } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const SocialLogin = () => {
     const { googleLogin } = useAuth();
@@ -30,8 +31,6 @@ const SocialLogin = () => {
                                 showConfirmButton: false,
                                 timer: 1500
                             })
-                            form.reset('');
-                            setError('');
                             navigate('/')
                         }
                     })

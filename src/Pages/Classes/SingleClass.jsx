@@ -1,19 +1,20 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useCart from "../../hooks/useCart";
 import { toast } from "react-hot-toast";
 
 const SingleClass = ({ singleClass }) => {
-    const { image, name, instructor, available_seats, price } = singleClass;
+    const { image, name, instructor, available_seats, price, _id } = singleClass;
     const [, refetch] = useCart();
     const { user } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
 
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (singleClass) => {
         if (user && user?.email) {
-            const cartItem = { name, image, price, email: user?.email }
+            const cartItem = { classID: _id, name, image, price, email: user?.email }
 
             fetch('http://localhost:5000/carts', {
                 method: "POST",
@@ -30,6 +31,20 @@ const SingleClass = ({ singleClass }) => {
                         toast.success('Class added successful!!')
                     }
                 })
+        }
+        else {
+            Swal.fire({
+                title: 'Please login to add class',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
+                }
+            })
         }
     }
     return (

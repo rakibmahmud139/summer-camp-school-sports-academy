@@ -2,15 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxioxSecure";
 
 const MangeUser = () => {
     const { user } = useAuth();
+    const [axiosSecure] = useAxiosSecure()
 
     const { data: students = [], refetch } = useQuery({
         queryKey: ['students'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/students')
-            return res.json();
+            const res = await axiosSecure.get('/students')
+            return res.data;
         }
     })
 
@@ -23,7 +25,7 @@ const MangeUser = () => {
             .then(data => {
                 refetch()
                 if (data.modifiedCount > 0) {
-                    toast.success(`${user.displayName} admin now`)
+                    toast.success(`${student.name} admin now`)
                 }
             })
 

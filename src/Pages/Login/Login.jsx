@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
     const { login } = useAuth();
@@ -20,13 +20,7 @@ const Login = () => {
             .then(res => {
                 const loggedUser = res.user;
                 if (loggedUser) {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Login Successful',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+                    toast.success('Login Successful!!')
                     reset();
                     navigate(from, { replace: true })
                 }

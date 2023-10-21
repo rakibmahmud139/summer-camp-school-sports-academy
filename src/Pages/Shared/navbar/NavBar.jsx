@@ -18,15 +18,20 @@ const NavBar = () => {
         <li><Link to='/instructors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
         {
-            user &&
-            <>
-                <li><Link to='/dashboard'>Dashboard</Link></li>
-                <button onClick={handleLogOut}>logout</button>
-            </>
+            user ?
+                <>
+                    <li><Link to='/dashboard'>Dashboard</Link></li>
+                    <button className="mb-1 mr-8 ml-4" onClick={handleLogOut}>logout</button>
+                    <img className="w-10 h-10 rounded-full" referrerPolicy="no-referrer" src={user?.photoURL} alt="" />
+                </>
+                :
+                <>
+                    <Link to='/login' className="mt-2 ml-4">Login</Link>
+                </>
         }
     </>
     return (
-        <div className="navbar bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-white px-6 rounded-md">
+        <div className="navbar bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-white px-6 rounded-t-lg">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -37,21 +42,13 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <a
-                    className="btn btn-ghost normal-case text-3xl">
-                    sports<span className="text-pink-600 text-4xl">Academy</span></a>
+                    className="btn btn-ghost normal-case mb-2 md:mb-1 text-3xl">
+                    sports<span className="text-pink-600 text-2xl md:text-4xl ">Academy</span></a>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="hidden navbar-end lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {navItems}
                 </ul>
-            </div>
-            <div className="navbar-end">
-                {
-                    user ?
-                        <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
-                        :
-                        <li><Link to='/login'>Login</Link></li>
-                }
             </div>
         </div>
     );
