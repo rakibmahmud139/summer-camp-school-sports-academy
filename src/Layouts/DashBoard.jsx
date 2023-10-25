@@ -4,10 +4,15 @@ import { FaBook } from "react-icons/fa";
 import { MdClass, MdOutlineLibraryAddCheck } from "react-icons/md";
 import { BsFillBookmarksFill } from 'react-icons/bs'
 import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
+import useAuth from "../hooks/useAuth";
 
 const DashBoard = () => {
-    const isInstructor = true;
-    const [isAdmin] = useAdmin()
+    const { user } = useAuth()
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+
+
 
     return (
         <div className="drawer lg:drawer-open">
@@ -22,18 +27,21 @@ const DashBoard = () => {
                 <ul className="menu p-4 w-80 h-full bg-accent text-white">
 
                     {
-                        isAdmin ?
-                            <>
-                                <li><Link to='/dashboard/adminHome'><HiHome size={20} />Admin Home</Link></li>
-                                <li><Link to='/dashboard/mangeClass'><HiBookmark size={20} /> Manage Classes</Link></li>
-                                <li><Link to='/dashboard/allStudent'><HiStatusOnline size={20} /> All Student</Link></li>
-                            </>
-                            :
-                            <>
-                                <li><Link to='/dashboard/studentHome'><HiHome size={20} />Student Home</Link></li>
-                                <li><Link to='/dashboard/myClass'><MdClass size={20} /> My Selected Class</Link></li>
-                                <li><Link to='/dashboard/enrolledClass'><FaBook size={20} /> My Enrolled Class</Link></li>
-                            </>
+                        user &&
+                        <>
+                            <li><Link to='/dashboard/studentHome'><HiHome size={20} />Student Home</Link></li>
+                            <li><Link to='/dashboard/myClass'><MdClass size={20} /> My Selected Class</Link></li>
+                            <li><Link to='/dashboard/enrolledClass'><FaBook size={20} /> My Enrolled Class</Link></li>
+                        </>
+                    }
+
+                    {
+                        isAdmin &&
+                        <>
+                            <li><Link to='/dashboard/adminHome'><HiHome size={20} />Admin Home</Link></li>
+                            <li><Link to='/dashboard/mangeClass'><HiBookmark size={20} /> Manage Classes</Link></li>
+                            <li><Link to='/dashboard/allStudent'><HiStatusOnline size={20} /> All Student</Link></li>
+                        </>
                     }
 
                     {isInstructor &&

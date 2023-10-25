@@ -1,11 +1,47 @@
 import Title from "../../../Components/Title";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../../hooks/useAxioxSecure";
+import toast from "react-hot-toast";
+import useAuth from "../../../hooks/useAuth";
 
+const image_hosting = import.meta.env.VITE_image_upload_token;
 
 const AddAClass = () => {
+    const { user } = useAuth()
+    const [axiosSecure] = useAxiosSecure()
 
-    const { register, handleSubmit, } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, reset } = useForm();
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting}`
+
+    const onSubmit = data => {
+        const fromData = new FormData();
+        fromData.append('image', data.image[0]);
+
+        fetch(img_hosting_url, {
+            method: 'POST',
+            body: fromData
+        })
+            .then(res => res.json())
+            .then(imgRes => {
+                if (imgRes.success) {
+                    const imgURL = imgRes.data.display_url;
+                    const { name, category, price, instructor, available_seats } = data;
+                    const newClass = { name, category, price: parseFloat(price), instructor, available_seats: parseFloat(available_seats), image: imgURL, email: user?.email };
+
+
+                    axiosSecure.post('/classes', newClass)
+                        .then(data => {
+                            if (data.data.insertedId) {
+                                reset()
+                                toast.success('Class upload successful')
+                            }
+                        })
+                }
+            })
+
+    };
+
+
 
     return (
         <div className="w-full">
@@ -30,7 +66,7 @@ const AddAClass = () => {
                         className="select select-accent w-3/4">
                         <option defaultValue={'Football'}>Football</option>
                         <option>Tennis</option>
-                        <option>Popular</option>
+                        <option>Cricket</option>
                         <option>Popular</option>
                         <option>Volleyball</option>
                         <option>Athletics</option>

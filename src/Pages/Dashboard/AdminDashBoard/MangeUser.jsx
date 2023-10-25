@@ -1,20 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { FaTrashAlt, FaUserShield } from "react-icons/fa";
-import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-hot-toast";
-import useAxiosSecure from "../../../hooks/useAxioxSecure";
+import Title from "../../../Components/Title";
+import useStudent from "../../../hooks/useStudent";
 
 const MangeUser = () => {
-    const { user } = useAuth();
-    const [axiosSecure] = useAxiosSecure()
 
-    const { data: students = [], refetch } = useQuery({
-        queryKey: ['students'],
-        queryFn: async () => {
-            const res = await axiosSecure.get('/students')
-            return res.data;
-        }
-    })
+    const [students, refetch] = useStudent();
 
     //make Admin
     const handleMakeAdmin = (student) => {
@@ -23,8 +13,8 @@ const MangeUser = () => {
         })
             .then(res => res.json())
             .then(data => {
-                refetch()
                 if (data.modifiedCount > 0) {
+                    refetch()
                     toast.success(`${student.name} admin now`)
                 }
             })
@@ -32,62 +22,69 @@ const MangeUser = () => {
     }
 
 
-    //delete student
-    const handleDelete = id => {
-        fetch(`http://localhost:5000/students/${id}`, {
-            method: 'DELETE'
+    //make instructor
+    const handleMakeInstructor = (student) => {
+        fetch(`http://localhost:5000/students/instructor/${student._id}`, {
+            method: "PATCH"
         })
             .then(res => res.json())
             .then(data => {
-                refetch()
-                if (data.deletedCount > 0) {
-                    toast.success('deleted successful')
+                if (data.modifiedCount > 0) {
+                    refetch()
+                    toast.success(`${student.name} instructor now`)
                 }
             })
+
     }
 
+
+
     return (
-        <div className="overflow-x-auto w-full">
-            <table className="table">
-                {/* head */}
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        students.map((student, index) =>
-                            <tr key={student._id}>
-                                <td>
-                                    {index + 1}
-                                </td>
-                                <td>
-                                    {student.name}
-                                </td>
-                                <td>
-                                    {student.email}
-                                </td>
-                                <td>
-                                    {
-                                        student.role === 'admin' ?
-                                            'Admin'
-                                            :
-                                            <button onClick={() => handleMakeAdmin(student)} className="text-accent text-xl ml-3"><FaUserShield /></button>
-                                    }
-                                </td>
-                                <td>
-                                    <button onClick={() => handleDelete(student._id)} className="btn btn-outline btn-xs btn-accent text-xl"><FaTrashAlt /></button>
-                                </td>
-                            </tr>
-                        )
-                    }
-                </tbody>
-            </table>
+        <div>
+            <Title heading='manage user' />
+            <div className="overflow-x-auto w-full">
+                <table className="table">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Admin</th>
+                            <th>Instructor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            students.map((student, index) =>
+                                <tr key={student._id}>
+                                    <td>
+                                        {index + 1}
+                                    </td>
+                                    <td>
+                                        {student.name}
+                                    </td>
+                                    <td>
+                                        {student.email}
+                                    </td>
+                                    <td>
+
+                                        <button onClick={() => handleMakeAdmin(student)}
+                                            disabled={student.role === 'admin'}
+                                            className="btn btn-outline text-accent text-xl ml-3 cursor-pointer">Make Admin</button>
+
+                                    </td>
+                                    <td>
+                                        <button onClick={() => handleMakeInstructor(student)}
+                                            disabled={student.role === 'instructor'}
+                                            className="btn btn-outline text-accent text-xl ml-3">Make Instructor</button>
+                                    </td>
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

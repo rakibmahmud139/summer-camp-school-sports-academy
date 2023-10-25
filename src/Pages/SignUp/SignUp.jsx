@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
-import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { toast } from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
@@ -110,7 +109,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name="photo" placeholder="photo" className="input input-bordered" required />
+                            <input type="text" name="photo" className="file-input file-input-bordered file-input-accent w-3/4" required />
                         </div>
                         <input className="btn btn-outline btn-accent mt-6" type="submit" value="Sign Up" />
                     </div>
