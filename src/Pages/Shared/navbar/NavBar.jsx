@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import logo from '../../../../public/sports.png'
 import useAuth from "../../../hooks/useAuth";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     //log Out
     const handleLogOut = () => {
@@ -20,7 +24,7 @@ const NavBar = () => {
         {
             user ?
                 <>
-                    <li><Link to='/dashboard'>Dashboard</Link></li>
+                    <li><Link to={isAdmin ? '/dashboard/adminHome' : '/dashboard/studentHome'}>Dashboard</Link></li>
                     <button className="mb-1 mr-8 ml-4" onClick={handleLogOut}>logout</button>
                     <img className="w-10 h-10 rounded-full" referrerPolicy="no-referrer" src={user?.photoURL} alt="" />
                 </>

@@ -1,10 +1,17 @@
 import { FaTrashAlt, FaUpload } from "react-icons/fa";
 import useCourse from "../../../hooks/useCourse";
+import Title from "../../../Components/Title";
 
 const InstructorsClass = () => {
+
+
     const [myCourse, refetch] = useCourse();
+
+
     return (
         <div className="overflow-x-auto w-full">
+            <Title heading="My Uploaded Class" />
+
             <table className="table">
                 {/* head */}
                 <thead>

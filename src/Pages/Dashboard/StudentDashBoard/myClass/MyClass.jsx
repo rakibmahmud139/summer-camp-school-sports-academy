@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useCart from "../../../../hooks/useCart";
 import { toast } from "react-hot-toast";
 
 const MyClass = () => {
-
     const [cart, refetch] = useCart();
 
 
@@ -45,7 +43,7 @@ const MyClass = () => {
             <div className="uppercase flex justify-evenly md:justify-center  items-center rounded-lg text-gray-900 bg-pink-100 py-5 mb-5">
                 <h3 className="md:text-3xl font-bold">My <span className="text-pink-600">Class</span> : {cart.length}</h3>
                 <p className="md:mx-48 font-bold">total:  <span className="text-pink-600"> $</span>{total}</p>
-                <button className="btn btn-accent btn-sm">PAY</button>
+                <Link to='/dashboard/payment'><button className="btn btn-accent btn-sm">PAY</button></Link>
             </div>
             <div className="overflow-x-auto">
                 <table className="table w-96 md:w-full">

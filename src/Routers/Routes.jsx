@@ -18,6 +18,7 @@ import MangeUser from "../Pages/Dashboard/AdminDashBoard/MangeUser";
 import AdminRoutes from "./AdminRoutes";
 import MyClass from "../Pages/Dashboard/StudentDashBoard/myClass/MyClass";
 import InstructorHome from "../Pages/Dashboard/instructorDashBoard/InstructorHome";
+import Payment from "../Pages/Dashboard/StudentDashBoard/myClass/Payment";
 
 
 
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/enrolledClass',
                 element: <PrivateRoute><MyEnrolledClass /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/payment',
+                element: <PrivateRoute><Payment /></PrivateRoute>
             },
 
             //Instructor Routes
