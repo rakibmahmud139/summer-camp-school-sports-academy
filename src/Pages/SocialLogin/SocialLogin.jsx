@@ -14,7 +14,7 @@ const SocialLogin = () => {
                 const createUser = res.user;
                 const student = { name: createUser.displayName, email: createUser.email }
 
-                fetch('http://localhost:5000/students', {
+                fetch('https://sports-academy-server-rakibmahmud139.vercel.app/students', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"
