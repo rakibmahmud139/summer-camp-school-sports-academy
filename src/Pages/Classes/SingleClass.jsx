@@ -16,7 +16,7 @@ const SingleClass = ({ singleClass }) => {
         if (user && user?.email) {
             const cartItem = { classID: _id, name, image, price, email: user?.email }
 
-            fetch('https://sports-academy-server-rakibmahmud139.vercel.app/carts', {
+            fetch('https://sports-academy-server-three.vercel.app/carts', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"

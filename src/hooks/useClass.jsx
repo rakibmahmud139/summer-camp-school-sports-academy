@@ -7,7 +7,7 @@ const useAllClass = () => {
         queryKey: ['classes'],
 
         queryFn: async () => {
-            const res = await fetch('https://sports-academy-server-rakibmahmud139.vercel.app/classes')
+            const res = await fetch('https://sports-academy-server-three.vercel.app/classes')
             return res.json();
         }
     })

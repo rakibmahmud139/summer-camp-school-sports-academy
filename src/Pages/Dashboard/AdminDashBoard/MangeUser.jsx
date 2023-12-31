@@ -8,7 +8,7 @@ const MangeUser = () => {
 
     //make Admin
     const handleMakeAdmin = (student) => {
-        fetch(`https://sports-academy-server-rakibmahmud139.vercel.app/students/admin/${student._id}`, {
+        fetch(`https://sports-academy-server-three.vercel.app/students/admin/${student._id}`, {
             method: "PATCH"
         })
             .then(res => res.json())
@@ -24,7 +24,7 @@ const MangeUser = () => {
 
     //make instructor
     const handleMakeInstructor = (student) => {
-        fetch(`https://sports-academy-server-rakibmahmud139.vercel.app/students/instructor/${student._id}`, {
+        fetch(`https://sports-academy-server-three.vercel.app/students/instructor/${student._id}`, {
             method: "PATCH"
         })
             .then(res => res.json())

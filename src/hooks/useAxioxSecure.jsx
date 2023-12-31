@@ -8,7 +8,7 @@ import useAuth from "./useAuth";
 
 
 const axiosSecure = axios.create({
-    baseURL: 'https://sports-academy-server-rakibmahmud139.vercel.app',
+    baseURL: 'https://sports-academy-server-three.vercel.app',
 });
 
 const useAxiosSecure = () => {

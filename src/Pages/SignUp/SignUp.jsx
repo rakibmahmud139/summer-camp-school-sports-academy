@@ -45,7 +45,7 @@ const SignUp = () => {
                         if (createUser) {
                             const student = { name: createUser.displayName, email: createUser.email }
 
-                            fetch('https://sports-academy-server-rakibmahmud139.vercel.app/students', {
+                            fetch('https://sports-academy-server-three.vercel.app/students', {
                                 method: "POST",
                                 headers: {
                                     "content-type": "application/json"
