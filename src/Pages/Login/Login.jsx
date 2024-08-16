@@ -12,6 +12,48 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
 
+    //!Login as admin
+    const handleAdminLogin = () => {
+        const data = {
+            email: 'admin13@ph.com',
+            password: 'Admin123@'
+        }
+
+        login(data.email, data.password)
+            .then(res => {
+                const loggedUser = res.user;
+                if (loggedUser) {
+                    toast.success('Login Successful!!')
+                    reset();
+                    navigate(from, { replace: true })
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+
+    //!Login as user
+    const handleUserLogin = () => {
+        const data = {
+            email: 'user13@gmail.com',
+            password: 'User123@'
+        }
+
+        login(data.email, data.password)
+            .then(res => {
+                const loggedUser = res.user;
+                if (loggedUser) {
+                    toast.success('Login Successful!!')
+                    reset();
+                    navigate(from, { replace: true })
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
     //Login User
     const { register, handleSubmit, reset } = useForm();
@@ -52,6 +94,8 @@ const Login = () => {
                         </div>
 
                         <input className="btn btn-outline btn-accent mt-6" type="submit" value="Login" />
+                        <input className="btn  btn-success mt-6" onClick={() => handleUserLogin()} value="Login as user" />
+                        <input className="btn btn-warning mt-6" onClick={() => handleAdminLogin()} value="Login as admin" />
                     </div>
                     <p className="text-center pb-4">New Here? <Link to='/signUp' className="text-accent">Sign Up</Link></p>
                 </form>
