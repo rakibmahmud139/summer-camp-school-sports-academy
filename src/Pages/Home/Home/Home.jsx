@@ -1,8 +1,11 @@
 import { Helmet } from "react-helmet-async";
-import GallerySection from "../AnotherSection/GallerySection";
 import Banner from "../Banner/Banner";
 import PopularClass from "../PopularClasses/PopularClass";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
+import Section2 from "../../../Components/Section2";
+import AboutUs from "../../../Components/AboutUs";
+import Gallery from "../../../Components/Gallery";
+import Testimonial from "../AnotherSection/Testimonial";
 
 const Home = () => {
     return (
@@ -11,9 +14,12 @@ const Home = () => {
                 <title>sportsAcademy | Home</title>
             </Helmet>
             <Banner />
+            <AboutUs />
+            <Section2 />
+            <Gallery />
             <PopularClass />
             <PopularInstructors />
-            <GallerySection />
+            <Testimonial />
         </div>
     );
 };
