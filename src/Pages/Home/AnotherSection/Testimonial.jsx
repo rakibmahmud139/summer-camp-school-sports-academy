@@ -1,4 +1,6 @@
-import "keen-slider/keen-slider.min.css";
+import { FaQuoteRight } from "react-icons/fa";
+import { FaQuoteLeft } from "react-icons/fa";
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useState } from "react";
 
 const testimonials = [
@@ -21,84 +23,101 @@ const testimonials = [
 ];
 
 const Testimonial = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [currentSlide, setCurrentSlide] = useState(0)
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setActiveIndex((current) => (current + 1) % testimonials.length);
-        }, 5000); // Rotate every 5 seconds
+            setCurrentSlide((prev) => (prev + 1) % testimonials.length)
+        }, 5000) // Change slide every 5 seconds
 
-        return () => clearInterval(timer);
-    }, []);
+        return () => clearInterval(timer)
+    }, [])
+
+    const nextSlide = () => {
+        setCurrentSlide((prev) => (prev + 1) % testimonials.length)
+    }
+
+    const prevSlide = () => {
+        setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    }
+
+    const goToSlide = (index) => {
+        setCurrentSlide(index)
+    }
 
     return (
-        <div className="bg-[#1B3B35] min-h-screen mt-16">
-            <div className="max-w-7xl mx-auto px-4 py-16">
-                {/* Navigation */}
-                <div className="mb-8">
+
+
+        <div className="bg-[#1B3B35] py-8 px-4">
+            <div className="max-w-7xl mx-auto">
+
+                <div className="mb-4">
                     <span className="text-pink-600 font-medium uppercase">• Testimonial</span>
                 </div>
 
-                <h2 className="text-white text-3xl  text-center font-bold leading-tight mb-12">
-                    Developing Complete, Modern Players.
-                </h2>
 
-                {/* Carousel */}
-                <div className="relative overflow-hidden">
-                    <div
-                        className="transition-transform duration-500 ease-in-out flex"
-                        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-                    >
-                        {testimonials.map((testimonial) => (
-                            <div
-                                key={testimonial.id}
-                                className="w-full flex-shrink-0"
-                            >
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                                    <div className="space-y-8">
-                                        <blockquote className="text-white/90 text-lg italic">
-                                            "{testimonial.quote}"
-                                        </blockquote>
 
-                                        <div className="space-y-1">
-                                            <div className="text-white font-semibold">{testimonial.author}</div>
-                                            <div className="text-white/70 text-sm">{testimonial.role}</div>
-                                        </div>
-                                    </div>
-
-                                    <div className="relative h-[500px] flex items-center justify-center">
-                                        <div className="absolute w-72 h-96 transform rotate-6 right-8 top-8 transition-all duration-500">
+                <div className="relative">
+                    <div className="overflow-hidden">
+                        <div
+                            className="flex transition-transform duration-500 ease-in-out"
+                            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                        >
+                            {testimonials.map((testimonial) => (
+                                <div
+                                    key={testimonial.id}
+                                    className="w-full flex-shrink-0 px-4"
+                                >
+                                    <div className=" rounded-lg p-8 text-center">
+                                        <div className="mb-6">
                                             <img
                                                 src={testimonial.image1}
-                                                alt={`${testimonial.author} portrait`}
-                                                className="w-full h-full object-cover rounded-lg shadow-2xl"
+                                                alt={testimonial.author}
+                                                className="w-20 h-20 rounded-full mx-auto"
                                             />
                                         </div>
-                                        <div className="absolute w-72 h-96 transform -rotate-6 left-8 bottom-8 transition-all duration-500">
-                                            <img
-                                                src={testimonial.image2}
-                                                alt="Player in action"
-                                                className="w-full h-full object-cover rounded-lg shadow-2xl"
-                                            />
-                                        </div>
+                                        <h3 className="text-white text-xl font-semibold mb-1">
+                                            {testimonial.author}
+                                        </h3>
+                                        <p className="text-gray-400 mb-4">{testimonial.role}</p>
+                                        <p className="text-gray-300 text-sm leading-relaxed flex items-start">
+                                            <FaQuoteLeft className="w-6 h-6 mr-2" />
+                                            <span className="flex-1">{testimonial.quote}</span>
+                                            <FaQuoteRight className="w-6 h-6 ml-2" />
+                                        </p>
                                     </div>
                                 </div>
-                            </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <button
+                        onClick={prevSlide}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-pink-600 p-2 rounded-full text-white hover:bg-pink-700 transition-colors"
+                        aria-label="Previous slide"
+                    >
+                        <ChevronLeft className="w-6 h-6" />
+                    </button>
+
+                    <button
+                        onClick={nextSlide}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-pink-600 p-2 rounded-full text-white hover:bg-pink-700 transition-colors"
+                        aria-label="Next slide"
+                    >
+                        <ChevronRight className="w-6 h-6" />
+                    </button>
+
+                    <div className="flex justify-center gap-2">
+                        {testimonials.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => goToSlide(index)}
+                                className={`w-2 h-2 rounded-full transition-colors ${currentSlide === index ? 'bg-blue-500' : 'bg-gray-600'
+                                    }`}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
                         ))}
                     </div>
-                </div>
-
-                {/* Carousel Indicators */}
-                <div className="flex justify-center gap-2 mt-8">
-                    {testimonials.map((_, index) => (
-                        <button
-                            key={index}
-                            className={`w-3 h-3 rounded-full transition-colors ${index === activeIndex ? 'bg-white' : 'bg-white/30'
-                                }`}
-                            onClick={() => setActiveIndex(index)}
-                            aria-label={`Go to slide ${index + 1}`}
-                        />
-                    ))}
                 </div>
             </div>
         </div>

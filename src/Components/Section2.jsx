@@ -10,13 +10,13 @@ const Section2 = () => {
                     <img
                         src={coachImg}
                         alt="Coach portrait"
-                        className="w-full h-full object-cover rounded-lg shadow-xl"
+                        className="w-full h-full object-cover rounded shadow-xl"
                     />
                 </div>
 
                 {/* Quote and author info */}
                 <div className="max-w-2xl">
-                    <blockquote className="text-white text-2xl md:text-3xl font-normal leading-relaxed mb-8">
+                    <blockquote className="text-white text-xl font-normal leading-relaxed mb-8">
                         "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue."
                     </blockquote>
 

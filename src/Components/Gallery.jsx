@@ -5,10 +5,10 @@ import galleryImg3 from '../assets/gallery3.jpg'
 
 const Gallery = () => {
     return (
-        <div className="bg-[#fae8e4] pt-20 pb-4 mt-16 px-4 overflow-hidden">
+        <div className="bg-[#fae8e4] pt-20 pb-4 px-4 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Heading */}
-                <h2 className="text-[#1B3B35] text-4xl md:text-5xl font-medium text-center mb-16">
+                <h2 className="text-[#1B3B35] text-3xl font-medium text-center mb-16">
                     The Gallery Academy
                 </h2>
 

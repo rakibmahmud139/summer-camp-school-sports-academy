@@ -5,7 +5,7 @@ import logo from '../../../../public/sports.png';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-accent bg-opacity-75 text-white rounded-xl mt-20">
+            <footer className="footer p-10 bg-accent bg-opacity-75 text-white">
                 <div>
                     <img className='w-36 h-36' src={logo} alt="" />
                     <p>sportsAcademy<br />Providing reliable tech since 2023</p>

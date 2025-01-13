@@ -14,11 +14,13 @@ const PopularClass = () => {
     const popularClasses = classes.filter(popular => popular.category === 'Popular');
 
     return (
-        <div>
-            <Title heading='Popular Class' subHeading='Here the all our popular classes' />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="max-w-7xl mx-auto px-4 py-16">
+            <nav className="mb-4">
+                <span className="text-pink-600 font-medium uppercase">• Popular Classes</span>
+            </nav>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {
-                    popularClasses.map(popular => <PopularCard
+                    popularClasses.slice(0, 4).map(popular => <PopularCard
                         key={popular._id}
                         popular={popular}
                     />)

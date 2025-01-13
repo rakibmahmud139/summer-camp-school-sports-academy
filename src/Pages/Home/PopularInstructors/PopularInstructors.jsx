@@ -15,11 +15,13 @@ const PopularInstructors = () => {
     const popularInstructors = instructors.filter(instructor => instructor.number_of_class_taken > 15);
 
     return (
-        <div>
-            <Title heading='Popular Instructors' subHeading='Here The Our Best Instructors' />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="max-w-7xl mx-auto px-4 py-16">
+            <nav className="mb-4">
+                <span className="text-pink-600 font-medium uppercase">• Best Instructors</span>
+            </nav>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {
-                    popularInstructors.map(instructor => <PopularInstructorsCard
+                    popularInstructors.slice(0, 4).map(instructor => <PopularInstructorsCard
                         key={instructor._id}
                         instructor={instructor}
                     />)
